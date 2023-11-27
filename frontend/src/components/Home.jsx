@@ -13,14 +13,14 @@ const Home = () => {
   const [showProjects, setShowProjects] = useState(false);
 
   const token = localStorage.getItem("token") || "";
-  const handleCloseEmailCollectionPopup = () => {
-    setShowEmailPopup(false);
-  };
+  
 
   const togglePopup = () => {
     setShowPopup(!showPopup);
   };
-
+  const handleCloseEmailCollectionPopup = () => {
+    setShowEmailPopup(false);
+  };
   const toggleProjects = () => {
     setShowProjects(true);
     window.location.reload();
