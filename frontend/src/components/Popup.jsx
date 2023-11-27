@@ -26,11 +26,9 @@ const Popup = ({ togglePopup, toggleProjects }) => {
   };
 
   const createProject = () => {
-    //  logic to create a project
     dispatch(createProjectForTheLoggedInUser(email, projectName, token))
       .then((res) => {
         console.log("new project created");
-        // Close the popup
         togglePopup();
         toggleProjects();
         console.log("project created", projectName);
