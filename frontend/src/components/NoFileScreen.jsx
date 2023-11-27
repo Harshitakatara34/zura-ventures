@@ -4,7 +4,7 @@ const NoFileScreen = () => {
   return (
     <div className="ml-80 w-3/4 mt-8 flex justify-center items-center">
       <div>
-        <h1 className="mb-4 text-base font-semibold px-72 ml-60"> Or</h1>
+        <h1 className="mb-4 text-base  px-72 ml-60"> Or</h1>
         <div className="border border-gray-500 rounded-md border-dashed pb-6 px-72">
           <img src={fileUploadIcon} alt="upload file" className="w-24 ml-52" />
           <h3 className="text-md font-semibold text-gray-600">
