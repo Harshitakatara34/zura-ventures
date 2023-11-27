@@ -1,11 +1,11 @@
 const express = require("express");
-const { ProjectModel } = require("../model/projectModel");
-const { FileModel } = require("../model/fileModel");
-const { UserModel } = require("../model/userModel");
-const fileRouter = express.Router();
+const { ProjectModel } = require("../Model/projectModel");
+const { FileModel } = require("../Model/FileModel");
+const { UserModel } = require("../Model/UserModel");
+const FileRouter = express.Router();
 
 // Creating new file
-fileRouter.post("/:projectId", async (req, res) => {
+FileRouter.post("/:projectId", async (req, res) => {
   try {
     const { projectId } = req.params;
     const { fileName, fileData } = req.body;
@@ -38,7 +38,7 @@ fileRouter.post("/:projectId", async (req, res) => {
 });
 
 // Find the file by its ID
-fileRouter.get("/:fileId", async (req, res) => {
+FileRouter.get("/:fileId", async (req, res) => {
   try {
     const fileId = req.params.fileId;
     const file = await FileModel.findById(fileId);
@@ -56,33 +56,33 @@ fileRouter.get("/:fileId", async (req, res) => {
 });
 
 // Editing a file data or file name
-fileRouter.patch("/:fileId", async (req, res) => {
+FileRouter.patch("/:fileId", async (req, res) => {
   try {
     const { fileId } = req.params;
     const email = req.email;
-    const newfileData = req.body.fileData;
+    const newfile = req.body.fileData;
 
     //Check if the user already exists with the provided email
     let user = await UserModel.findOne({ email });
 
     if (!user) {
-      res.send(404).send({ msg: "There is no user from this id." });
+      res.send(404).send({ msg: " no user " });
     }
 
-    if (typeof newfileData === "undefined") {
-      return res.status(400).send({ message: "Missing newfileData" });
+    if (typeof newfile === "undefined") {
+      return res.status(400).send({ message: "Missing " });
     }
     // Update the file with the new data
     const updatedFile = await FileModel.findByIdAndUpdate(
       fileId,
-      { fileData: newfileData },
+      { fileData: newfile },
       { new: true }
     );
 
     if (!updatedFile) {
       return res
         .status(404)
-        .send({ message: "File not found by this fileId." });
+        .send({ message: "File not found " });
     }
 
     res.status(200).send({ msg: "File updated successfully!", updatedFile });
@@ -91,7 +91,7 @@ fileRouter.patch("/:fileId", async (req, res) => {
   }
 });
 
-fileRouter.delete("/:fileId", async (req, res) => {
+FileRouter.delete("/:fileId", async (req, res) => {
   try {
     const { fileId } = req.params;
     console.log("inside delete", fileId, typeof fileId);
@@ -113,4 +113,4 @@ fileRouter.delete("/:fileId", async (req, res) => {
   }
 });
 
-module.exports = { fileRouter };
+module.exports = { FileRouter };

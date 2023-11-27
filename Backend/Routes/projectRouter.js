@@ -1,16 +1,17 @@
 const express = require("express");
-const { ProjectModel } = require("../model/projectModel");
-const { UserModel } = require("../model/userModel");
-const projectRouter = express.Router();
+const { ProjectModel } = require("../Model/projectModel");
+const { UserModel } = require("../Model/UserModel");
+const ProjectRouter = express.Router();
 
 //Logic to Fetch Files of a Project
-projectRouter.get("/:projectId", async (req, res) => {
+ProjectRouter.get("/:projectId", async (req, res) => {
   try {
+    
     const { projectId } = req.params;
-
+    console.log(projectId)
     // Find the project and populate its files
     const project = await ProjectModel.findById(projectId).populate("files");
-
+console.log(project)
     if (!project) {
       return res.status(404).send({ message: "Project not found" });
     }
@@ -21,7 +22,7 @@ projectRouter.get("/:projectId", async (req, res) => {
   }
 });
 
-projectRouter.post("/create", async (req, res) => {
+ProjectRouter.post("/create", async (req, res) => {
   try {
     const { email, projectName } = req.body;
     // Find the user by email
@@ -36,7 +37,7 @@ projectRouter.post("/create", async (req, res) => {
     if (newProject) {
       return res
         .status(200)
-        .send({ message: "Project by this name already exists." });
+        .send({ message: "Project already exists." });
     }
 
     // Create a new project linked to the user
@@ -55,7 +56,7 @@ projectRouter.post("/create", async (req, res) => {
 
 // Fetch all the projects by an email
 
-projectRouter.get("/", async (req, res) => {
+ProjectRouter.get("/", async (req, res) => {
   try {
     const email = req.email;
 
@@ -75,4 +76,4 @@ projectRouter.get("/", async (req, res) => {
   }
 });
 
-module.exports = { projectRouter };
+module.exports = { ProjectRouter };
