@@ -4,7 +4,7 @@ import { deleteFile } from "../redux/actions";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 
-const ProjectFilesDisplayScreen = ({
+const Files = ({
   files,
   toggleEditFileData,
   fetchFilesForProject,
@@ -79,4 +79,4 @@ const ProjectFilesDisplayScreen = ({
   );
 };
 
-export default ProjectFilesDisplayScreen;
+export default Files;

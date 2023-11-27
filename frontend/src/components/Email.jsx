@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProjects, loginOrCreateUser } from "../redux/actions";
 
-const UserEmailCollectionPopup = ({
+const Email= ({
   handleCloseEmailCollectionPopup,
   setShowEmailPopup,
   showEmailPopup,
@@ -51,4 +51,4 @@ const UserEmailCollectionPopup = ({
   );
 };
 
-export default UserEmailCollectionPopup;
+export default Email;

@@ -2,27 +2,24 @@ import React, { useEffect, useState } from "react";
 import plus from "../assets/Vector.svg";
 import Popup from "./Popup";
 import { Link } from "react-router-dom";
-import { fetchProjects } from "../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
-import moment from "moment";
+import { fetchProjects } from "../redux/actions";
 import Loader from "./Loader";
 
 const AllProjects = ({ togglePopup, showPopup, toggleProjects }) => {
+
   const dispatch = useDispatch();
-
-  let projects = useSelector((state) => state.projectReducer.projects);
-
   const loading = useSelector((state) => state.projectReducer.loading);
-  console.log("inside all projects", projects);
-console.log(projects)
-  const fetchingProjectsFromDB = () => {
-    dispatch(fetchProjects());
-  };
+  let projects = useSelector((state) => state.projectReducer.projects);
+  
+  
 
   useEffect(() => {
     fetchingProjectsFromDB();
   }, []);
-
+  const fetchingProjectsFromDB = () => {
+    dispatch(fetchProjects());
+  };
   const colors = ["teal","violet","blue","magenta","green","yellow","orange"];
 
   const colorMap = {};
@@ -31,12 +28,7 @@ console.log(projects)
     colorMap[card.projectName] = colors[colorIndex];
   });
 
-  function limitProjectName(projectName) {
-    if (projectName.length > 15) {
-      return projectName.substring(0, 15) + "...";
-    }
-    return projectName;
-  }
+  
 
   const generateProjectThumbnail = (projectName) => {
     const words = projectName.trim().split(" ");
@@ -48,7 +40,12 @@ console.log(projects)
     return initials;
   };
 
-  // if (error) { return <h1> Something went wrong !!!</h1> }
+  function limitProjectName(projectName) {
+    if (projectName.length > 15) {
+      return projectName.substring(0, 15) + "...";
+    }
+    return projectName;
+  }
   return (
     <>
       <div className="mt-6 flex justify-between">
@@ -91,9 +88,6 @@ console.log(projects)
                   <p className="text-xs text-gray-800">
                     {card.files.length} Episodes
                   </p>
-                  <p className="text-xs text-gray-400 mt-4">
-                    Last edited {moment(card.updatedAt).fromNow()}
-                  </p>
                 </div>
               </div>
             </Link>
@@ -101,7 +95,7 @@ console.log(projects)
         {showPopup && (
           <Popup togglePopup={togglePopup} toggleProjects={toggleProjects} />
         )}{" "}
-        {/* Conditionally render Popup based on showPopup state */}
+       
       </div>
     </>
   );

@@ -1,8 +1,7 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import HomePage from "./HomePage";
 import ProjectPage from "./ProjectPage";
-import PageNotFound from "./PageNotFound";
+import HomePage from "./HomePage";
 
 const AllRoutes = () => {
   return (
@@ -10,7 +9,7 @@ const AllRoutes = () => {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/project/:id" element={<ProjectPage />} />
-        <Route path="*" element={<PageNotFound />} />
+     
       </Routes>
     </div>
   );

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import home from "../assets/home.svg";
-const Breadcrumbs = ({ text1, text2 }) => {
+const Box = ({ text1, text2 }) => {
   return (
     <div className="ml-80 mt-0">
       <nav className="text-lg">
@@ -33,4 +33,4 @@ const Breadcrumbs = ({ text1, text2 }) => {
   );
 };
 
-export default Breadcrumbs;
+export default Box;

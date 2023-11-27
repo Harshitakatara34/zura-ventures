@@ -2,15 +2,15 @@ import React, { useEffect, useState } from "react";
 import youtube from "../assets/youtubeIcon.svg";
 import spotify from "../assets/spotify.svg";
 import NoFileScreen from "./NoFileScreen";
-import CreateFilePopup from "./CreateFilePopup";
+import CreateFilePopup from "./Create";
 import { useParams } from "react-router-dom";
 
 import { fetchProjectFiles } from "../redux/actions";
-import ProjectFilesDisplayScreen from "./ProjectFilesDisplayScreen";
-import EditTranscription from "./EditTranscription";
-import Breadcrumbs from "./Breadcrumbs";
+import ProjectFilesDisplayScreen from "./Files";
+import EditTranscription from "./Edit";
+import Box from "./Box";
 import { useSelector } from "react-redux";
-const ProjectFileUploadScreen = () => {
+const Upload = () => {
   const { id } = useParams();
   const [files, setFiles] = useState([]);
   const [showFileUploadPopup, setShowFileUploadPopup] = useState(false);
@@ -46,7 +46,7 @@ const ProjectFileUploadScreen = () => {
 
   return (
     <div className="w-screen mt-2 ml-14">
-      <Breadcrumbs className="ml-96 mb-4" text1={"Project"} text2={"Upload"} />
+      <Box className="ml-96 mb-4" text1={"Project"} text2={"Upload"} />
       <h1 className="text-purple-700 text-4xl font-bold ml-80">Upload</h1>
 
       <div
@@ -106,4 +106,4 @@ const ProjectFileUploadScreen = () => {
   );
 };
 
-export default ProjectFileUploadScreen;
+export default Upload;

@@ -4,9 +4,9 @@ import plus from "../assets/Vector.svg";
 import coding from "../assets/coding.png";
 import Popup from "./Popup";
 import AllProjects from "./AllProjects";
-import UserEmailCollectionPopup from "./UserEmailCollectionPopup";
+import UserEmailCollectionPopup from "./Email";
 
-const HomeMainSection = () => {
+const Home = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [showProjects, setShowProjects] = useState(false);
 
@@ -119,4 +119,4 @@ const HomeMainSection = () => {
   );
 };
 
-export default HomeMainSection;
+export default Home;

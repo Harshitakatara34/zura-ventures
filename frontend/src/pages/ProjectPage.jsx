@@ -4,12 +4,12 @@ import logo from "../assets/directright.svg";
 import logoText from "../assets/LAMA..svg";
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
-import ProjectFileUploadScreen from "../components/ProjectFileUploadScreen";
+import ProjectUpload from "../components/Upload";
 
 const LeftSidebar = () => {
   const [showSettings, setShowSettings] = useState(false);
 
-  const [activeTab, setActiveTab] = useState("tab1"); // State to manage active tab
+  const [activeTab, setActiveTab] = useState("tab1"); 
   console.log("inside left side bar");
   const handleTabClick = (tab) => {
     setActiveTab(tab);
@@ -99,9 +99,9 @@ const LeftSidebar = () => {
             </div>
           </div>
         </div>
-        {/* right side of the scrren */}
+       
         <div>
-          <ProjectFileUploadScreen />
+          <ProjectUpload />
         </div>
       </div>
     </>

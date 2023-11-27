@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { createFile } from "../redux/actions";
 
-const CreateFilePopup = ({
+const Create = ({
   projectId,
   toggleFileUploadPopup,
   fetchFilesForProject,
@@ -79,4 +79,4 @@ const CreateFilePopup = ({
   );
 };
 
-export default CreateFilePopup;
+export default Create;

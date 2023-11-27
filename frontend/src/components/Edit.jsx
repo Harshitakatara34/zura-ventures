@@ -2,15 +2,20 @@ import React, { useEffect, useState } from "react";
 import { FaSearchLocation, FaRegEdit } from "react-icons/fa";
 import { getFileById, updateFile } from "../redux/actions";
 import { useDispatch } from "react-redux";
-import Breadcrumbs from "./Breadcrumbs";
+import Box from "./Box";
 
-const EditTranscription = () => {
-  const fileId = localStorage.getItem("fileId");
+const Edit = () => {
   const [editMode, setEditMode] = useState(false);
-  console.log("inside edit transcription", fileId);
-  const dispatch = useDispatch();
-  const [data, setData] = useState("");
+  const fileId = localStorage.getItem("fileId");
   const [editedData, setEditedData] = useState("");
+  const [data, setData] = useState("");
+  const dispatch = useDispatch();
+  const updateFileDataInDB = () => {
+    console.log("edited data", editedData);
+    dispatch(updateFile(fileId, editedData));
+    window.location.href = "/";
+  };
+  
   useEffect(() => {
     dispatch(getFileById(fileId)).then((result) => {
       console.log("inside edit use effect response", result.data.file.fileData);
@@ -19,14 +24,10 @@ const EditTranscription = () => {
     });
   }, [editMode]);
 
-  const updateFileDataInDB = () => {
-    console.log("edited data", editedData);
-    dispatch(updateFile(fileId, editedData));
-    window.location.href = "/";
-  };
+ 
   return (
     <div className="w-screen mt-2 ml-14">
-      <Breadcrumbs
+      <Box
         className="ml-96 mb-4"
         text1={"Project"}
         text2={"Transcript"}
@@ -93,4 +94,4 @@ const EditTranscription = () => {
   );
 };
 
-export default EditTranscription;
+export default Edit;
