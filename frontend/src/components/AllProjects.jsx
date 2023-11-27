@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import plus from "../assets/Vector.svg";
 import Popup from "./Popup";
 import { Link } from "react-router-dom";

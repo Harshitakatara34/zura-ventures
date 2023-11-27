@@ -2,16 +2,16 @@ import axios from "axios";
 import {
   CREATE_FILE_SUCCESS,
   DELETE_FILE_SUCCESS,
-  FETCH_PROJECTS_FAILURE,
-  FETCH_PROJECTS_REQUEST,
-  FETCH_PROJECTS_SUCCESS,
+ PROJECTS_FAILURE,
+ PROJECTS_REQUEST,
+ PROJECTS_SUCCESS,
   FILE_OPERATION_FAILURE,
   GET_FILE_SUCCESS,
-  PROJECT_CREATE_FAILED,
-  PROJECT_CREATE_SUCCESS,
+  CREATE_FAILED,
+  CREATE_SUCCESS,
   UPDATE_FILE_SUCCESS,
-  USER_LOGIN_FAILED,
-  USER_LOGIN_SUCCESS,
+  LOGIN_FAILED,
+  LOGIN_SUCCESS,
 } from "./actionTypes";
 
 const apiUrl = "https://venturee.onrender.com";
@@ -29,9 +29,9 @@ export const loginOrCreateUser = (email) => async (dispatch) => {
       localStorage.setItem("token", token);
     }
 
-    dispatch({ type: USER_LOGIN_SUCCESS, payload: { token, existingUser } });
+    dispatch({ type: LOGIN_SUCCESS, payload: { token, existingUser } });
   } catch (error) {
-    dispatch({ type: USER_LOGIN_FAILED, payload: error.message });
+    dispatch({ type: LOGIN_FAILED, payload: error.message });
   }
 };
 
@@ -59,28 +59,28 @@ export const createProjectForTheLoggedInUser =
       const { newProject } = response.data;
 
       dispatch({
-        type: PROJECT_CREATE_SUCCESS,
+        type: CREATE_SUCCESS,
         payload: newProject,
       });
     } catch (error) {
-      dispatch({ type: PROJECT_CREATE_FAILED, payload: error.message });
+      dispatch({ type: CREATE_FAILED, payload: error.message });
     }
   };
   export const fetchProjects = () => async (dispatch) => {
     try {
-      dispatch({ type: FETCH_PROJECTS_REQUEST });
+      dispatch({ type:PROJECTS_REQUEST });
   
       const response = await axios.get(`${apiUrl}/project`, config);
       console.log(response);
   
       dispatch({
-        type: FETCH_PROJECTS_SUCCESS,
+        type:PROJECTS_SUCCESS,
         payload: response.data,
       });
     } catch (error) {
       console.error("Error fetching projects:", error);
       dispatch({
-        type: FETCH_PROJECTS_FAILURE,
+        type:PROJECTS_FAILURE,
         payload: error,
       });
     }

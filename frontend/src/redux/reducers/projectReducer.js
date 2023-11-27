@@ -1,7 +1,7 @@
 import {
-  FETCH_PROJECTS_SUCCESS,
-  FETCH_PROJECTS_FAILURE,
-  FETCH_PROJECTS_REQUEST,
+  PROJECTS_SUCCESS,
+  PROJECTS_FAILURE,
+  PROJECTS_REQUEST,
   PROJECT_CREATE_SUCCESS,
   PROJECT_CREATE_FAILED,
 } from "../actionTypes";
@@ -15,18 +15,18 @@ const initialState = {
 
 const projectReducer = (state = initialState, action) => {
   switch (action.type) {
-    case FETCH_PROJECTS_REQUEST:
+    case PROJECTS_REQUEST:
       return {
         ...state,
         loading: true,
       };
-    case FETCH_PROJECTS_SUCCESS:
+    case PROJECTS_SUCCESS:
       return {
         ...state,
         projects: action.payload,
         loading: false,
       };
-    case FETCH_PROJECTS_FAILURE:
+    case PROJECTS_FAILURE:
       return {
         ...state,
         loading: false,
