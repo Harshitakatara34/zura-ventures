@@ -9,9 +9,9 @@ const Files = ({
   toggleEditFileData,
   fetchFilesForProject,
 }) => {
-
-  const dispatch = useDispatch();
   const { id } = useParams();
+  const dispatch = useDispatch();
+ 
   const handleDelete = (id) => {
     dispatch(deleteFile(id)).then((res) => {
       fetchFilesForProject(id);

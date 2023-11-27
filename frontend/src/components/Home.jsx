@@ -7,10 +7,11 @@ import AllProjects from "./AllProjects";
 import UserEmailCollectionPopup from "./Email";
 
 const Home = () => {
-  const [showPopup, setShowPopup] = useState(false);
+  const [showPopup, setShowPopup] = useState(false)
+  
+  const [showEmailPopup, setShowEmailPopup] = useState(false);
   const [showProjects, setShowProjects] = useState(false);
 
-  const [showEmailPopup, setShowEmailPopup] = useState(false);
   const token = localStorage.getItem("token") || "";
   const handleCloseEmailCollectionPopup = () => {
     setShowEmailPopup(false);
