@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchProjects, loginOrCreateUser } from "../redux/actions";
+import { useDispatch } from "react-redux";
+import {  loginOrCreateUser } from "../redux/actions";
 
 const Email= ({
   handleCloseEmailCollectionPopup,
