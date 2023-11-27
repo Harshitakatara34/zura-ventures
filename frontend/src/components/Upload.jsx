@@ -1,30 +1,34 @@
 import React, { useEffect, useState } from "react";
+import CreateFilePopup from "./Create";
 import youtube from "../assets/youtubeIcon.svg";
 import spotify from "../assets/spotify.svg";
 import NoFileScreen from "./NoFileScreen";
-import CreateFilePopup from "./Create";
 import { useParams } from "react-router-dom";
-
 import { fetchProjectFiles } from "../redux/actions";
-import ProjectFilesDisplayScreen from "./Files";
 import EditTranscription from "./Edit";
 import Box from "./Box";
-import { useSelector } from "react-redux";
+
 const Upload = () => {
   const { id } = useParams();
-  const [files, setFiles] = useState([]);
-  const [showFileUploadPopup, setShowFileUploadPopup] = useState(false);
   const [showEdit, setShowEdit] = useState(false);
+  const [files, setFiles] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [showFileUploadPopup, setShowFileUploadPopup] = useState(false);
+ 
 
-  const toggleEditFileData = () => {
-        setShowEdit(!showEdit);
-  };
+  
 
   const toggleFileUploadPopup = () => {
     setShowFileUploadPopup(!showFileUploadPopup);
   };
+  const toggleEditFileData = () => {
+    setShowEdit(!showEdit);
+};
+  
 
+  useEffect(() => {
+    fetchFilesForProject();
+  }, []);
   const fetchFilesForProject = () => {
     fetchProjectFiles(id)
       .then((files) => {
@@ -35,11 +39,6 @@ const Upload = () => {
         console.error("Error fetching project files:", error.message);
       });
   };
-
-  useEffect(() => {
-    fetchFilesForProject();
-  }, []);
-
   if (showEdit) {
     return <EditTranscription />;
   }
