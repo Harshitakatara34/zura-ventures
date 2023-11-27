@@ -14,7 +14,7 @@ const Box = ({ text1, text2 }) => {
             <>
               {" "}
               <li className="flex items-center">
-                <Link to="" className="text-gray-600 hover:underline">
+                <Link to="">
                   {text1}
                 </Link>
                 <span className="mx-2">/</span>
