@@ -8,8 +8,8 @@ const Create = ({
   fetchFilesForProject,
   setLoading,
 }) => {
-  const [fileName, setFileName] = useState("");
   const [fileData, setFileData] = useState("");
+  const [fileName, setFileName] = useState("");
   const dispatch = useDispatch();
   console.log("inside create file popup project id", projectId);
   const uploadProjectFile = () => {
@@ -64,12 +64,7 @@ const Create = ({
               uploadProjectFile();
             }}
             disabled={!fileName || fileName.length < 4}
-            className={`px-4 py-2 rounded bg-purple-700 text-white font-semibold 
-                                    ${
-                                      !fileName || fileName.length < 4
-                                        ? "opacity-50 cursor-not-allowed"
-                                        : "hover:bg-blue-600"
-                                    }`}
+            className={`px-4 py-2 rounded bg-purple-700 text-white font-semibold`}
           >
             Upload
           </button>

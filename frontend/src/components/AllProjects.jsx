@@ -1,19 +1,15 @@
 import React, { useEffect } from "react";
 import plus from "../assets/Vector.svg";
 import Popup from "./Popup";
-import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { fetchProjects } from "../redux/actions";
 import Loader from "./Loader";
 
 const AllProjects = ({ togglePopup, showPopup, toggleProjects }) => {
-
   const dispatch = useDispatch();
   const loading = useSelector((state) => state.projectReducer.loading);
   let projects = useSelector((state) => state.projectReducer.projects);
-  
-  
-
   useEffect(() => {
     fetchingProjectsFromDB();
   }, []);
@@ -23,9 +19,9 @@ const AllProjects = ({ togglePopup, showPopup, toggleProjects }) => {
   const colors = ["teal","violet","blue","magenta","green","yellow","orange"];
 
   const colorMap = {};
-  projects?.forEach((card, index) => {
-    const colorIndex = index % colors.length;
-    colorMap[card.projectName] = colors[colorIndex];
+  projects?.forEach((card, i) => {
+    const color = i % colors.length;
+    colorMap[card.projectName] = colors[color];
   });
 
   
@@ -67,7 +63,7 @@ const AllProjects = ({ togglePopup, showPopup, toggleProjects }) => {
       )}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 max-w-screen-lg mx-auto my-4">
         {!loading &&
-          projects?.map((card, index) => (
+          projects?.map((card, i) => (
             <Link to={`/project/${card._id}`} key={card._id}>
               <div
                 key={card._id}

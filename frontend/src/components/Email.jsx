@@ -4,22 +4,20 @@ import {  loginOrCreateUser } from "../redux/actions";
 
 const Email= ({
   handleCloseEmailCollectionPopup,
-  setShowEmailPopup,
-  showEmailPopup,
 }) => {
   const dispatch = useDispatch();
-  const [warning, setWarning] = useState("");
+ 
 
   const [email, setEmail] = useState("");
-
+  const handleSubmit = () => {
+    handleCloseEmailCollectionPopup();
+    dispatch(loginOrCreateUser(email));
+  };
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
   };
 
-  const handleSubmitEmail = () => {
-    handleCloseEmailCollectionPopup();
-    dispatch(loginOrCreateUser(email));
-  };
+ 
 
   return (
     <div className="fixed inset-0 z-50 overflow-auto bg-gray-800 bg-opacity-50 flex justify-center items-center">
@@ -36,12 +34,11 @@ const Email= ({
             onChange={handleEmailChange}
             className="block w-full border border-gray-300 rounded py-2 px-3 focus:outline-none focus:border-blue-500"
           />
-          {warning && <p className="text-red-500 text-sm mt-1">{warning}</p>}
         </label>
         <div className="flex justify-center my-4">
           <button
             className={`px-4 py-2 rounded bg-purple-700 text-white font-semibold`}
-            onClick={handleSubmitEmail}
+            onClick={handleSubmit}
           >
             Proceed
           </button>
