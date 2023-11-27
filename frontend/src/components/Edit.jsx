@@ -7,9 +7,10 @@ import Box from "./Box";
 const Edit = () => {
   const [editMode, setEditMode] = useState(false);
   const fileId = localStorage.getItem("fileId");
-  const [editedData, setEditedData] = useState("");
   const [data, setData] = useState("");
+  const [editedData, setEditedData] = useState("");
   const dispatch = useDispatch();
+
   const updateFileDataInDB = () => {
     console.log("edited data", editedData);
     dispatch(updateFile(fileId, editedData));
