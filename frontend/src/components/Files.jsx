@@ -22,7 +22,7 @@ const Files = ({
     <div className="ml-44 w-9/12 mt-4 flex flex-col justify-center items-center">
       <div
         className="mt-8 rounded-md border border-gray-300"
-        style={{ width: "880px", justifyContent: "space-between" }}
+        style={{ width: "850px", justifyContent: "space-between" }}
       >
         <table
           style={{
